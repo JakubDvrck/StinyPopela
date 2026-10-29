@@ -1,37 +1,40 @@
-# Stíny popela — pracovní prototyp
+# Stíny popela — prototyp 0.2.0
 
-Aktuální testovací APK: **0.1.2**. Oprava používá čisté Unity sestavení a přímo přibalený materiál `PrototypeLit`. Starší APK 0.1.0 nepoužívej: na telefonu selhávalo při načítání grafických dat. Verze 0.1.1 odstranila tento pád, ale odhalila chybějící shader. Sestavení 0.1.2 uspělo bez chyb; zobrazení této verze na telefonu zatím čeká na ověření.
+Unity 6000.3.27f1 LTS, URP, Android arm64. Budoucí iOS verze používá společný projekt.
 
-Stažení: https://github.com/JakubDvrck/StinyPopela/releases/tag/v0.1.2-prototype
+Stažení: https://github.com/JakubDvrck/StinyPopela/releases/tag/v0.2.0-prototype
 
-Unity 6000.3.27f1 LTS, Universal Render Pipeline. Hlavní platforma Android; budoucí iOS verze používá společný projekt.
+## Co obsahuje tato verze
 
-## Spuštění
+- Izometrický les, dungeon a boss, válečník, joystick, základní útok a odemykatelný sek.
+- Základní útok funguje od začátku a zamíří na nejbližšího nepřítele v dosahu. Sek zasahuje okolí.
+- Lišty životů nepřátel a plovoucí čísla skutečného poškození. Poškození hráče je červené.
+- Panel POSTAVA / VÝBAVA: náhled aktuálního modelu, deset slotů výbavy a inventář 8 × 4.
+- Klepnutí na předmět v mřížce jej vybaví a ukáže porovnání; klepnutí na vybavený předmět jej sundá, pokud je místo.
+- Náhodné zbraně, části zbroje, prsteny a amulety podle úrovně; boss má zvláštní meč.
+- Rozdělování atributů pod inventářem s náhledem a tlačítky ULOŽIT ATRIBUTY a ZRUŠIT ZMĚNY. Zavření panelu nepotvrzené změny zahodí.
+- Při otevřeném panelu se hra pozastaví. Výbava a potvrzené atributy se uloží automaticky.
+- NAČÍST funguje i bez uložení: obnoví zdraví a vrátí postavu do bezpečí.
 
-Otevři projekt v odpovídající verzi Unity. Scéna `Assets/Scenes/Prototype.unity` bude po dokončení přípravy hlavní herní scénou. Lze ji vytvořit také přes menu **Stiny Popela → Create Prototype Scene**; tento příkaz nahrazuje otevřenou scénu, proto před použitím ulož svou práci.
+## Atributy prototypu
 
-Stiskni Play. Na počítači: WASD pohyb, mezerník útok, Q plošný sek. Na telefonu: joystick a tlačítka. Sek je nutné nejprve odemknout dovednostním bodem získaným po postupu úrovně. Tlačítka atributů utrácejí volné body. Kořist se sbírá přiblížením, pokud je v mřížce místo. V inventáři klepnutí na meč nastaví jeho bonus jako aktuálně vybavenou zbraň.
+Na úrovni 1 jsou všechny atributy 5. Za další úroveň hráč získá 5 volitelných bodů a 1 skill point.
 
-## Rozsah
+- Síla: +2 základního poškození za bod; ovlivňuje také výchozí sílu seku.
+- Obratnost: +0,05 rychlosti pohybu za bod.
+- Inteligence: +2 poškození seku za bod.
+- Vitalita: +10 maximálních životů za bod.
 
-Pracovní geometrie lesa a dungeonu, válečník, nájezdníci, boss, útok a vylepšitelný sek, zkušenosti a atributy, náhodné meče podle úrovně a inventář 8 × 4. Uložení zachovává atributy, zkušenosti, schopnost a kořist; zatím ne stav světa, pozici, životy nepřátel ani poražení bosse. Tlačítko načíst obnovuje zdraví.
+Jde o počáteční vyvážení pro hratelného válečníka. Náhled zobrazuje skutečné současné přepočty.
 
-Toto je technický prototyp. Neobsahuje zatím úplnou tvorbu postavy, všechny rasy a povolání, ostatní druhy výbavy, přesouvání předmětů v inventáři, příběh ani zbývající mapy.
+## Spuštění a sestavení
 
-## Android
+Otevři Assets/Scenes/Prototype.unity a stiskni Play. WASD pohyb, mezerník útok, Q sek. Na telefonu používej joystick a tlačítka. Sek se odemyká skill pointem po získání úrovně.
 
-Po ověření scény použij Android Build Support s SDK/NDK a OpenJDK z Unity instalace. Editor metoda `StinyPopela.Editor.PrototypeSetup.BuildAndroid` vytvoří vývojové APK v `Builds/Android/StinyPopela.apk`. APK a generované složky jsou vyloučené z Gitu. APK není podepsané produkčním klíčem; použije vývojový podpis Unity.
+Pro Android klonuj do skutečné cesty bez diakritiky, například C:\UnityProjects\StinyPopela. Starou Library/Bee cache nekopíruj. Použij Android Build Support, SDK/NDK a OpenJDK z Unity instalace. Metoda StinyPopela.Editor.PrototypeSetup.BuildAndroid vytvoří vývojové APK. Build musí skončit Succeeded bez chyb; ruční balení chybného exportu není náhrada.
 
-Android nástroje vyžadují skutečnou cestu projektu bez diakritiky. Pro další sestavování klonuj například do složky `C:\UnityProjects\StinyPopela`. Krátká cesta Windows nestačí: Gradle ji může převést zpět na původní cestu s diakritikou. První APK bylo připraveno dokončením balení exportovaného Gradle projektu v samostatné složce bez diakritiky.
+## Ověření a omezení
 
-## Pokračování z telefonu
+Integrační metoda StinyPopela.Editor.PrototypeVerification.Run se spouští v Play režimu. Ověřuje skutečné tlačítko základního útoku, zamíření, poškození, kolize, pozastavení, návrh/zrušení/potvrzení a uložení atributů, rozpočet bodů, výměnu výbavy bez ztráty a obnovení po smrti. Kontroly i vizuální kontrola menu prošly v Editoru s nulovým počtem chyb konzole. Test 0.2.0 na skutečném telefonu je následný krok.
 
-Repozitář: https://github.com/JakubDvrck/StinyPopela
-
-GitHub uchovává zdrojové soubory; sám o sobě nespouští Unity Editor. Pro testování na Androidu je nutné stáhnout vytvořené APK a povolit instalaci pro konkrétní použitý zdroj. Pro další sestavení musí být dostupný počítač s Unity nebo samostatně nastavená sestavovací služba. Automatické cloudové sestavování zatím není nastavené.
-
-## Stav ověření
-
-Ověřeno v Unity Editoru: kompilace skriptů, běžící herní smyčka, zobrazení scény a českých textů, zásah nepřítele a získání zkušeností. Samostatná kontrola ověřila 5 atributových bodů a 1 skill point při postupu z úrovně 1 na 2 a utracení atributového bodu.
-
-Android APK 0.1.0 bylo sestaveno z exportovaného Gradle projektu. Podpis APK v2 byl ověřen nástrojem apksigner; manifest obsahuje `com.stinypopela.prototype`, minimální API 25, cílové API 36 a architekturu arm64-v8a. Velikost APK je 44 339 316 bajtů. Hra dosud nebyla spuštěna na skutečném telefonu; tento test musí následovat na Galaxy S26.
+Grafika je pracovní. Chybí úplná tvorba postavy, další povolání, ruční přetahování předmětů a další mapy. Uložení zachovává postavu, schopnost, kořist a výbavu; neobnovuje polohu, nepřátele ani stav bosse. Cloudové sestavování není nastavené. Repo je veřejné.

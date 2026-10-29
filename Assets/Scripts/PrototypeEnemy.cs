@@ -9,10 +9,11 @@ namespace StinyPopela
         public float health = 45;
         float nextHit;
         bool dead;
+        void Start() { CombatFeedback.Track(this, health); }
 
         void Update()
         {
-            if (dead || target == null || !target.Alive) return;
+            if (dead || target == null || !target.Alive || Time.timeScale<=0) return;
             var delta = target.transform.position - transform.position;
             delta.y = 0;
             if (delta.magnitude > 6.5f) return;
@@ -32,7 +33,9 @@ namespace StinyPopela
         public void Hit(float damage)
         {
             if (dead) return;
-            health -= damage;
+            float actual = Mathf.Min(health, Mathf.Max(0, damage));
+            health -= actual;
+            CombatFeedback.Show(transform.position + Vector3.up * (boss ? 3 : 2), actual, false);
             if (health > 0) return;
             dead = true;
             int dropLevel = target.progress.level;
