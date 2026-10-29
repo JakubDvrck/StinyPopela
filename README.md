@@ -18,6 +18,8 @@ Toto je technický prototyp. Neobsahuje zatím úplnou tvorbu postavy, všechny 
 
 Po ověření scény použij Android Build Support s SDK/NDK a OpenJDK z Unity instalace. Editor metoda `StinyPopela.Editor.PrototypeSetup.BuildAndroid` vytvoří vývojové APK v `Builds/Android/StinyPopela.apk`. APK a generované složky jsou vyloučené z Gitu. APK není podepsané produkčním klíčem; použije vývojový podpis Unity.
 
+Android nástroje vyžadují cestu projektu bez diakritiky. Na tomto počítači otevři stejný projekt přes existující krátkou cestu `C:\PRCE~1\ChatGpt\STINYP~1`. Na jiném počítači klonuj například do složky `C:\UnityProjects\StinyPopela`; krátká cesta je specifická pro tento počítač.
+
 ## Pokračování z telefonu
 
 Repozitář: https://github.com/JakubDvrck/StinyPopela
