@@ -2,6 +2,8 @@
 
 První technická verze pro Android. Pracovní modely a prostředí slouží k ověření soubojů a ovládání.
 
+APK 0.1.0: arm64-v8a, minimální Android API 25, velikost přibližně 44 MB. Sestavení Gradle uspělo a podpis APK v2 byl ověřen. Běh na skutečném telefonu zatím ověřený není.
+
 - Izometrická kamera, virtuální joystick a tlačítka útoku.
 - Válečník, lesní nepřátelé a boss v kamenném dungeonu na severu.
 - Základní útok a plošný sek, který je potřeba odemknout skill pointem.

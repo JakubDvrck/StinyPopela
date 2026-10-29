@@ -18,7 +18,7 @@ Toto je technický prototyp. Neobsahuje zatím úplnou tvorbu postavy, všechny 
 
 Po ověření scény použij Android Build Support s SDK/NDK a OpenJDK z Unity instalace. Editor metoda `StinyPopela.Editor.PrototypeSetup.BuildAndroid` vytvoří vývojové APK v `Builds/Android/StinyPopela.apk`. APK a generované složky jsou vyloučené z Gitu. APK není podepsané produkčním klíčem; použije vývojový podpis Unity.
 
-Android nástroje vyžadují cestu projektu bez diakritiky. Na tomto počítači otevři stejný projekt přes existující krátkou cestu `C:\PRCE~1\ChatGpt\STINYP~1`. Na jiném počítači klonuj například do složky `C:\UnityProjects\StinyPopela`; krátká cesta je specifická pro tento počítač.
+Android nástroje vyžadují skutečnou cestu projektu bez diakritiky. Pro další sestavování klonuj například do složky `C:\UnityProjects\StinyPopela`. Krátká cesta Windows nestačí: Gradle ji může převést zpět na původní cestu s diakritikou. První APK bylo připraveno dokončením balení exportovaného Gradle projektu v samostatné složce bez diakritiky.
 
 ## Pokračování z telefonu
 
@@ -28,4 +28,6 @@ GitHub uchovává zdrojové soubory; sám o sobě nespouští Unity Editor. Pro 
 
 ## Stav ověření
 
-Ověřeno v Unity Editoru: kompilace skriptů, běžící herní smyčka, zobrazení scény a českých textů, zásah nepřítele a získání zkušeností. Samostatná kontrola ověřila 5 atributových bodů a 1 skill point při postupu z úrovně 1 na 2 a utracení atributového bodu. Android sestavení a ovládání na skutečném telefonu jsou další samostatné kontroly; test Editoru je nenahrazuje.
+Ověřeno v Unity Editoru: kompilace skriptů, běžící herní smyčka, zobrazení scény a českých textů, zásah nepřítele a získání zkušeností. Samostatná kontrola ověřila 5 atributových bodů a 1 skill point při postupu z úrovně 1 na 2 a utracení atributového bodu.
+
+Android APK 0.1.0 bylo sestaveno z exportovaného Gradle projektu. Podpis APK v2 byl ověřen nástrojem apksigner; manifest obsahuje `com.stinypopela.prototype`, minimální API 25, cílové API 36 a architekturu arm64-v8a. Velikost APK je 44 339 316 bajtů. Hra dosud nebyla spuštěna na skutečném telefonu; tento test musí následovat na Galaxy S26.
