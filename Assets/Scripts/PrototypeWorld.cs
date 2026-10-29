@@ -33,9 +33,9 @@ namespace StinyPopela
         {
             var go = GameObject.CreatePrimitive(type); go.name = name;
             go.transform.position = position; go.transform.localScale = scale;
-            var shader = Shader.Find("Universal Render Pipeline/Lit");
-            if (shader == null) throw new InvalidOperationException("URP Lit shader unavailable");
-            go.GetComponent<Renderer>().material = new Material(shader) { color = color };
+            var template = Resources.Load<Material>("PrototypeLit");
+            if (template == null) throw new InvalidOperationException("PrototypeLit material resource unavailable");
+            go.GetComponent<Renderer>().material = new Material(template) { color = color };
             return go;
         }
 

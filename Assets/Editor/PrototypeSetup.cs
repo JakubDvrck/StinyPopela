@@ -11,6 +11,7 @@ namespace StinyPopela.Editor
         [MenuItem("Stiny Popela/Create Prototype Scene")]
         public static void Create()
         {
+            EnsureRuntimeMaterial();
             if (!System.IO.Directory.Exists("Assets/Scenes")) AssetDatabase.CreateFolder("Assets","Scenes");
             var scene = EditorSceneManager.NewScene(NewSceneSetup.DefaultGameObjects, NewSceneMode.Single);
             var pipeline = UniversalRenderPipeline.asset;
@@ -46,6 +47,7 @@ namespace StinyPopela.Editor
 
         public static void BuildAndroid()
         {
+            EnsureRuntimeMaterial();
             System.IO.Directory.CreateDirectory("Builds/Android");
             var report=BuildPipeline.BuildPlayer(new BuildPlayerOptions {
                 scenes=new[]{"Assets/Scenes/Prototype.unity"}, locationPathName="Builds/Android/StinyPopela.apk",
@@ -53,6 +55,17 @@ namespace StinyPopela.Editor
             });
             if(report.summary.result!=UnityEditor.Build.Reporting.BuildResult.Succeeded)
                 throw new System.Exception("Android build failed: "+report.summary.result);
+        }
+
+        public static void EnsureRuntimeMaterial()
+        {
+            const string path = "Assets/Resources/PrototypeLit.mat";
+            if (!AssetDatabase.IsValidFolder("Assets/Resources")) AssetDatabase.CreateFolder("Assets", "Resources");
+            if (AssetDatabase.LoadAssetAtPath<Material>(path) != null) return;
+            var shader = Shader.Find("Universal Render Pipeline/Lit");
+            if (shader == null) throw new System.InvalidOperationException("URP Lit missing in Editor");
+            AssetDatabase.CreateAsset(new Material(shader), path);
+            AssetDatabase.SaveAssets();
         }
     }
 }

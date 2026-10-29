@@ -1,1 +1,1 @@
-94f1e8de21da889cdd995921777cc4d5261e98caca795bea802bfb8ad6d513b4  StinyPopela.apk
+0a8d30c2ba160d4f068c4cb3064b6a13bbd0bbda0896be01b4d9c420b098f634  StinyPopela-0.1.2.apk

@@ -1,5 +1,9 @@
 # Stíny popela — pracovní prototyp
 
+Aktuální testovací APK: **0.1.2**. Oprava používá čisté Unity sestavení a přímo přibalený materiál `PrototypeLit`. Starší APK 0.1.0 nepoužívej: na telefonu selhávalo při načítání grafických dat. Verze 0.1.1 odstranila tento pád, ale odhalila chybějící shader. Sestavení 0.1.2 uspělo bez chyb; zobrazení této verze na telefonu zatím čeká na ověření.
+
+Stažení: https://github.com/JakubDvrck/StinyPopela/releases/tag/v0.1.2-prototype
+
 Unity 6000.3.27f1 LTS, Universal Render Pipeline. Hlavní platforma Android; budoucí iOS verze používá společný projekt.
 
 ## Spuštění
